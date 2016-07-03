@@ -106,7 +106,7 @@ public class ArraySyntaxTest extends AbstractTest {
         String source = "{{ ['one', 2, three, numbers['four']] }}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("three", "3");
         context.put("numbers", new HashMap<String, Object>() {
 
@@ -128,7 +128,7 @@ public class ArraySyntaxTest extends AbstractTest {
         String source = "{{ ['one' + 'plus', 2 - 1, three.number, numbers['four'][0], numbers ['five'] .value ] }}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("three", new Object() {
 
             public Integer number = 3;
@@ -683,7 +683,7 @@ public class ArraySyntaxTest extends AbstractTest {
         String source = "{{ person ['first-name'] }}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("person", new HashMap<String, Object>() {
 
             {
@@ -705,7 +705,7 @@ public class ArraySyntaxTest extends AbstractTest {
         String source = "{{ person ['first-name'][0] }}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("person", new HashMap<String, Object>() {
 
             {
@@ -727,7 +727,7 @@ public class ArraySyntaxTest extends AbstractTest {
         String source = "{{ person ['first-name'] .name }}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("person", new HashMap<String, Object>() {
 
             {
@@ -756,7 +756,7 @@ public class ArraySyntaxTest extends AbstractTest {
         String source = "{% if person ['first-name'] == 'Bob' %}{{ person ['first-name'] }}{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("person", new HashMap<String, Object>() {
 
             {
@@ -778,7 +778,7 @@ public class ArraySyntaxTest extends AbstractTest {
         String source = "{% set name = person ['first-name'] %}{{ name }}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("person", new HashMap<String, Object>() {
 
             {

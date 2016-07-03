@@ -18,7 +18,7 @@ public class I18nExtension extends AbstractExtension {
 
     @Override
     public Map<String, Function> getFunctions() {
-        Map<String, Function> functions = new HashMap<>();
+        Map<String, Function> functions = new HashMap<String, Function>();
         functions.put("i18n", new i18nFunction());
         return functions;
     }

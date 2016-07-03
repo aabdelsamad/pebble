@@ -51,7 +51,7 @@ public class CoreTestsTest extends AbstractTest {
         String source = "{% if num is even %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("num", new Integer(2));
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -95,7 +95,7 @@ public class CoreTestsTest extends AbstractTest {
         String source = "{% if num is odd %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("num", new Integer(3));
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -119,7 +119,7 @@ public class CoreTestsTest extends AbstractTest {
 
         String source = "{% if null is null %}yes{% endif %}{% if obj is null %}yes{% endif %}{% if 2 is null %}no{% else %}yes{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("obj", null);
 
         Writer writer = new StringWriter();
@@ -133,7 +133,7 @@ public class CoreTestsTest extends AbstractTest {
 
         String source = "{% if null is empty() %}yes{% endif %}{% if '  ' is empty() %}yes{% endif %}{% if obj is empty() %}yes{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("obj", new ArrayList<String>());
 
         Writer writer = new StringWriter();
@@ -147,7 +147,7 @@ public class CoreTestsTest extends AbstractTest {
 
         String source = "{% if null is iterable() %}no{% else %}yes{% endif %}{% if obj1 is iterable() %}yes{% else %}no{% endif %}{% if obj2 is iterable() %}no{% else %}yes{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("obj1", new ArrayList<String>());
         context.put("obj2", new HashMap<String, Object>());
 
@@ -203,7 +203,7 @@ public class CoreTestsTest extends AbstractTest {
 
         String source = "{% if not classroom.students is empty %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("classroom", new Classroom());
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -234,7 +234,7 @@ public class CoreTestsTest extends AbstractTest {
         PebbleTemplate template = pebble.getTemplate(source);
 
         Writer writer = new StringWriter();
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("test", "yes");
         template.evaluate(writer, context);
         assertEquals("yesyes", writer.toString());
@@ -251,9 +251,9 @@ public class CoreTestsTest extends AbstractTest {
         PebbleTemplate template = pebble.getTemplate(source);
 
         Writer writer = new StringWriter();
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<String, Object>();
         map.put("test", "yes");
         context.put("test", map);
         template.evaluate(writer, context);
@@ -265,7 +265,7 @@ public class CoreTestsTest extends AbstractTest {
 
     public static class Classroom {
 
-        public static List<Object> students = new ArrayList<>();
+        public static List<Object> students = new ArrayList<Object>();
     }
 
 }

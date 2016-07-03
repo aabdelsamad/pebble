@@ -24,7 +24,7 @@ import com.mitchellbosecke.pebble.extension.Filter;
  */
 public class JoinFilter implements Filter {
 
-    private final List<String> argumentNames = new ArrayList<>();
+    private final List<String> argumentNames = new ArrayList<String>();
 
     public JoinFilter() {
         argumentNames.add("separator");

@@ -252,7 +252,7 @@ public class PebbleEngine {
 
         private Loader<?> loader;
 
-        private List<Extension> userProvidedExtensions = new ArrayList<>();
+        private List<Extension> userProvidedExtensions = new ArrayList<Extension>();
 
         private Syntax syntax = new Syntax.Builder().build();
 
@@ -435,7 +435,7 @@ public class PebbleEngine {
         public PebbleEngine build() {
 
             // core extensions
-            List<Extension> extensions = new ArrayList<>();
+            List<Extension> extensions = new ArrayList<Extension>();
             extensions.add(new CoreExtension());
             extensions.add(escaperExtension);
             extensions.add(new I18nExtension());
@@ -443,7 +443,7 @@ public class PebbleEngine {
 
             // default loader
             if (loader == null) {
-                List<Loader<?>> defaultLoadingStrategies = new ArrayList<>();
+                List<Loader<?>> defaultLoadingStrategies = new ArrayList<Loader<?>>();
                 defaultLoadingStrategies.add(new ClasspathLoader());
                 defaultLoadingStrategies.add(new FileLoader());
                 loader = new DelegatingLoader(defaultLoadingStrategies);

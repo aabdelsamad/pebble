@@ -124,7 +124,7 @@ public class EvaluationContext {
      */
     public EvaluationContext threadSafeCopy(PebbleTemplateImpl self) {
         EvaluationContext result = new EvaluationContext(self, strictVariables, locale, extensionRegistry, tagCache,
-                executorService, new ArrayList<>(importedTemplates), scopeChain.deepCopy(), hierarchy);
+                executorService, new ArrayList<PebbleTemplateImpl>(importedTemplates), scopeChain.deepCopy(), hierarchy);
         return result;
     }
 

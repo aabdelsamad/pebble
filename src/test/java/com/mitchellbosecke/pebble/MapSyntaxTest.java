@@ -153,7 +153,7 @@ public class MapSyntaxTest extends AbstractTest {
         String source = "{{ {1:'one', 'two':2, three:'three', numbers['four']:4} | mapToString }}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("three", "3");
         context.put("numbers", new HashMap<String, Object>() {
 
@@ -176,7 +176,7 @@ public class MapSyntaxTest extends AbstractTest {
         String source = "{{ {'one' + 'plus':'oneplus', 2 - 1:3, three.number:(2+1), 0:numbers['four'][0], numbers ['five'] .value:'five'} | mapToString }}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("three", new Object() {
 
             public Integer number = 3;

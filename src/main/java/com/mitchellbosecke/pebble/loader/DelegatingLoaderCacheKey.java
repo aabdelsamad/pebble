@@ -24,7 +24,7 @@ public final class DelegatingLoaderCacheKey {
     private final int hashCode;
 
     DelegatingLoaderCacheKey(final List<Object> delegatingCacheKeys, final String templateName) {
-        this.delegatingCacheKeys = Collections.unmodifiableList(new ArrayList<>(delegatingCacheKeys));
+        this.delegatingCacheKeys = Collections.unmodifiableList(new ArrayList<Object>(delegatingCacheKeys));
         this.templateName = templateName;
         this.hashCode = this.caclulateHashCode();
     }

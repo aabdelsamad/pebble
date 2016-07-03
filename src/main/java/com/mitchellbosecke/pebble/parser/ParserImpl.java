@@ -81,7 +81,7 @@ public class ParserImpl implements Parser {
 
         this.stream = stream;
 
-        this.blockStack = new LinkedList<>();
+        this.blockStack = new LinkedList<String>();
 
         BodyNode body = subparse();
 
@@ -104,7 +104,7 @@ public class ParserImpl implements Parser {
      */ public BodyNode subparse(StoppingCondition stopCondition) throws ParserException {
 
         // these nodes will be the children of the root node
-        List<RenderableNode> nodes = new ArrayList<>();
+        List<RenderableNode> nodes = new ArrayList<RenderableNode>();
 
         Token token;
         while (!stream.isEOF()) {

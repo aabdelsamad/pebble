@@ -49,7 +49,7 @@ public class EscaperExtensionTest extends AbstractTest {
         String source = "{{ num }}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         BigDecimal num = new BigDecimal("1234E+4");
         context.put("num", num);
 
@@ -65,7 +65,7 @@ public class EscaperExtensionTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ text | escape(strategy='html') }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("text", "&<>\"\'");
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -96,7 +96,7 @@ public class EscaperExtensionTest extends AbstractTest {
     public void testAutoescapePrintExpression() throws PebbleException, IOException {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
         PebbleTemplate template = pebble.getTemplate("{{ text }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("text", "<br />");
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -107,7 +107,7 @@ public class EscaperExtensionTest extends AbstractTest {
     public void testAutoescapeNonString() throws PebbleException, IOException {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
         PebbleTemplate template = pebble.getTemplate("{{ text }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("text", Collections.singletonList("<br />"));
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -119,7 +119,7 @@ public class EscaperExtensionTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false)
                 .autoEscaping(false).build();
         PebbleTemplate template = pebble.getTemplate("{{ text }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("text", "<br />");
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -130,7 +130,7 @@ public class EscaperExtensionTest extends AbstractTest {
     public void testRawFilter() throws PebbleException, IOException {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
         PebbleTemplate template = pebble.getTemplate("{{ text | upper | raw }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("text", "<br />");
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -141,7 +141,7 @@ public class EscaperExtensionTest extends AbstractTest {
     public void testRawFilterNotBeingLast() throws PebbleException, IOException {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
         PebbleTemplate template = pebble.getTemplate("{{ text | raw | upper}}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("text", "<br />");
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -152,7 +152,7 @@ public class EscaperExtensionTest extends AbstractTest {
     public void testEscapeIntoAbbreviate() throws PebbleException, IOException {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
         PebbleTemplate template = pebble.getTemplate("{{ text | escape | abbreviate(5)}}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("text", "1234567");
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -163,7 +163,7 @@ public class EscaperExtensionTest extends AbstractTest {
     public void testDoubleEscaping() throws PebbleException, IOException {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
         PebbleTemplate template = pebble.getTemplate("{{ text | escape }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("text", "<br />");
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -177,7 +177,7 @@ public class EscaperExtensionTest extends AbstractTest {
         PebbleTemplate template = pebble.getTemplate(
                 "{% autoescape 'html' %}{{ text }}{% endautoescape %}" + "{% autoescape %}{{ text }}{% endautoescape %}"
                         + "{% autoescape false %}{{ text }}{% endautoescape %}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("text", "<br />");
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -190,7 +190,7 @@ public class EscaperExtensionTest extends AbstractTest {
         PebbleTemplate template = pebble
                 .getTemplate("{{ test(danger) }}{% macro test(input) %}<{{ input }}>{% endmacro %}");
         Writer writer = new StringWriter();
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("danger", "<br>");
         template.evaluate(writer, context);
         assertEquals("<&lt;br&gt;>", writer.toString());
@@ -200,7 +200,7 @@ public class EscaperExtensionTest extends AbstractTest {
     public void testAutoEscapingInclude() throws PebbleException, IOException {
         PebbleEngine pebble = new PebbleEngine.Builder().strictVariables(false).build();
         PebbleTemplate template = pebble.getTemplate("templates/template.autoescapeInclude1.peb");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("text", "<br>");
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -212,7 +212,7 @@ public class EscaperExtensionTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false)
                 .autoEscaping(false).build();
         PebbleTemplate template = pebble.getTemplate("{% autoescape 'html' %}{{ text|raw }}{% endautoescape %}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("text", "<br />");
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -223,7 +223,7 @@ public class EscaperExtensionTest extends AbstractTest {
     public void testAutoEscapingParentFunction() throws PebbleException, IOException {
         PebbleEngine pebble = new PebbleEngine.Builder().strictVariables(false).build();
         PebbleTemplate template = pebble.getTemplate("templates/template.autoescapeParent1.peb");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("text", "<br>");
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -235,7 +235,7 @@ public class EscaperExtensionTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
         PebbleTemplate template = pebble
                 .getTemplate("{% block header %}<{{ text }}>{% endblock %}{{ block('header') }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("text", "<br>");
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -255,7 +255,7 @@ public class EscaperExtensionTest extends AbstractTest {
 
         // replaces all a's with b's
         PebbleTemplate template = pebble.getTemplate("{{ text }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("text", "my name is alex");
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -267,7 +267,7 @@ public class EscaperExtensionTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false)
                 .extension(new TestExtension()).build();
         PebbleTemplate template = pebble.getTemplate("{{ bad() }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
         assertEquals("&lt;script&gt;alert(&quot;injection&quot;);&lt;/script&gt;", writer.toString());
@@ -277,7 +277,7 @@ public class EscaperExtensionTest extends AbstractTest {
     public void testNoEscapeMacro() throws PebbleException, IOException {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
         PebbleTemplate template = pebble.getTemplate("{{ test() }}{% macro test() %}<br/>{% endmacro %}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
         assertEquals("<br/>", writer.toString());
@@ -287,7 +287,7 @@ public class EscaperExtensionTest extends AbstractTest {
     public void testCompareSafeStrings() throws PebbleException, IOException {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
         PebbleTemplate template = pebble.getTemplate("{{ text|raw == text|raw }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("text", "a");
         Writer writer = new StringWriter();
         template.evaluate(writer, context);

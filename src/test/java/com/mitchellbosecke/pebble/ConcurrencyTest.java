@@ -83,7 +83,7 @@ public class ConcurrencyTest extends AbstractTest {
                         TestObject testObject = new TestObject(a, b, c, "test"+d);
 
                         StringWriter writer = new StringWriter();
-                        Map<String, Object> context = new HashMap<>();
+                        Map<String, Object> context = new HashMap<String, Object>();
                         context.put("test", testObject);
                         template.evaluate(writer, context);
 
@@ -151,7 +151,7 @@ public class ConcurrencyTest extends AbstractTest {
                         TestObject testObject = new TestObject(a, b, c, "test" + d);
 
                         StringWriter writer = new StringWriter();
-                        Map<String, Object> context = new HashMap<>();
+                        Map<String, Object> context = new HashMap<String, Object>();
                         context.put("test", testObject);
                         template.evaluate(writer, context);
 
@@ -188,7 +188,7 @@ public class ConcurrencyTest extends AbstractTest {
                         TestObject testObject = new TestObject(a, b, c, "test" + d);
 
                         StringWriter writer = new StringWriter();
-                        Map<String, Object> context = new HashMap<>();
+                        Map<String, Object> context = new HashMap<String, Object>();
                         context.put("test", testObject);
                         template.evaluate(writer, context);
 

@@ -32,7 +32,7 @@ public class EscaperExtension extends AbstractExtension {
 
     @Override
     public Map<String, Filter> getFilters() {
-        Map<String, Filter> filters = new HashMap<>();
+        Map<String, Filter> filters = new HashMap<String, Filter>();
         filters.put("escape", filter);
         filters.put("raw", new RawFilter());
         return filters;
@@ -40,14 +40,14 @@ public class EscaperExtension extends AbstractExtension {
 
     @Override
     public List<TokenParser> getTokenParsers() {
-        List<TokenParser> parsers = new ArrayList<>();
+        List<TokenParser> parsers = new ArrayList<TokenParser>();
         parsers.add(new AutoEscapeTokenParser());
         return parsers;
     }
 
     @Override
     public List<NodeVisitorFactory> getNodeVisitors() {
-        List<NodeVisitorFactory> visitors = new ArrayList<>();
+        List<NodeVisitorFactory> visitors = new ArrayList<NodeVisitorFactory>();
         visitors.add(visitorFactory);
         return visitors;
     }

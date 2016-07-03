@@ -31,7 +31,7 @@ public class AttributeSubscriptSyntaxTest extends AbstractTest {
         String source = "{{ person['first-name'] }}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("person", new HashMap<String, Object>() {
 
             {
@@ -55,7 +55,7 @@ public class AttributeSubscriptSyntaxTest extends AbstractTest {
         String source2 = "{% set var = 'pear' %}{{ colors[var] }}";
         PebbleTemplate template2 = pebble.getTemplate(source2);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("colors", new HashMap<String, Object>() {
 
             {
@@ -85,7 +85,7 @@ public class AttributeSubscriptSyntaxTest extends AbstractTest {
         String source2 = "{{ colors[two] }}";
         PebbleTemplate template2 = pebble.getTemplate(source2);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("colors", new HashMap<Long, Object>() {
 
             {
@@ -114,7 +114,7 @@ public class AttributeSubscriptSyntaxTest extends AbstractTest {
         String source = "{{ person['name']['first'] }}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("person", new HashMap<String, Object>() {
 
             {
@@ -140,7 +140,7 @@ public class AttributeSubscriptSyntaxTest extends AbstractTest {
         String source = "{{ person['name'].first }}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("person", new HashMap<String, Object>() {
 
             {

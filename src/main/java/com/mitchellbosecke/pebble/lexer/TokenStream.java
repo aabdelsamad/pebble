@@ -16,7 +16,7 @@ import com.mitchellbosecke.pebble.lexer.Token.Type;
 
 public class TokenStream {
 
-    private ArrayList<Token> tokens = new ArrayList<>();
+    private ArrayList<Token> tokens = new ArrayList<Token>();
 
     private int current;
 

@@ -53,7 +53,7 @@ public class InheritanceTest extends AbstractTest {
 	public void testDynamicInheritance() throws PebbleException, IOException {
 		PebbleEngine pebble = new PebbleEngine.Builder().strictVariables(false).build();
 		PebbleTemplate template = pebble.getTemplate("templates/template.dynamicChild.peb");
-		Map<String, Object> context = new HashMap<>();
+		Map<String, Object> context = new HashMap<String, Object>();
 		context.put("extendNumberOne", true);
 
 		Writer writer1 = new StringWriter();

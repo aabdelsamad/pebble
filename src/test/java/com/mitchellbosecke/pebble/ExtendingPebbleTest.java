@@ -33,7 +33,7 @@ public class ExtendingPebbleTest extends AbstractTest {
         @Override
         public Map<String, Filter> getFilters() {
 
-            Map<String, Filter> filters = new HashMap<>();
+            Map<String, Filter> filters = new HashMap<String, Filter>();
 
             filters.put("noArgumentsButCanAccessContext", new Filter() {
 

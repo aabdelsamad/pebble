@@ -32,7 +32,7 @@ public class StrictModeTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("templates/template.strictModeComplexExpression.peb");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         Writer writer = new StringWriter();
 
@@ -55,7 +55,7 @@ public class StrictModeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().strictVariables(true).build();
         PebbleTemplate template = pebble.getTemplate("templates/template.strictModeSimpleExpression.peb");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         Writer writer = new StringWriter();
 

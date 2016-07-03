@@ -28,7 +28,7 @@ public class CompilerTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ foo }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("foo", "BAR");
         Writer writer = new StringWriter();
         template.evaluate(writer, context);

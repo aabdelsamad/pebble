@@ -29,7 +29,7 @@ import java.util.concurrent.TimeoutException;
  */
 public class FutureWriter extends Writer {
 
-    private final LinkedList<Future<String>> orderedFutures = new LinkedList<>();
+    private final LinkedList<Future<String>> orderedFutures = new LinkedList<Future<String>>();
 
     private final Writer internalWriter;
 

@@ -78,7 +78,7 @@ public class CoreTagsTest extends AbstractTest {
         String source = "{% if false or steve == true  %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("yes", true);
 
         Writer writer = new StringWriter();
@@ -93,7 +93,7 @@ public class CoreTagsTest extends AbstractTest {
         String source = "{% if 'string' %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("yes", true);
 
         Writer writer = new StringWriter();
@@ -114,7 +114,7 @@ public class CoreTagsTest extends AbstractTest {
         String source = "{% if alpha %}alpha{% elseif beta %}beta{% else %}gamma{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("alpha", true);
         context.put("beta", false);
 
@@ -129,7 +129,7 @@ public class CoreTagsTest extends AbstractTest {
 
         String source = "{% if variable %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("variable", true);
 
         Writer writer = new StringWriter();
@@ -150,7 +150,7 @@ public class CoreTagsTest extends AbstractTest {
         String source = "{% if foobar %}true{% else %}false{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         Writer writer = new StringWriter();
 
         // "foobar" value not set at all yet
@@ -190,8 +190,8 @@ public class CoreTagsTest extends AbstractTest {
 
         String source = "{% for user in users %}{% if loop.first %}[{{ loop.length }}]{% endif %}{% if loop.last %}[{{ loop.length }}]{% endif %}{{ loop.index }}{{ loop.revindex }}{{ user.username }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
-        List<User> users = new ArrayList<>();
+        Map<String, Object> context = new HashMap<String, Object>();
+        List<User> users = new ArrayList<User>();
         users.add(new User("Alex"));
         users.add(new User("Bob"));
         users.add(new User("John"));
@@ -206,14 +206,14 @@ public class CoreTagsTest extends AbstractTest {
     public void testForWithMap() throws PebbleException, IOException {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
 
-        Map<String, Integer> data = new LinkedHashMap<>();
+        Map<String, Integer> data = new LinkedHashMap<String, Integer>();
         data.put("One", 1);
         data.put("Two", 2);
         data.put("Three", 3);
 
         String source = "{% for entry in data %}{{ entry.key }} {{ entry.value }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("data", data);
 
         Writer writer = new StringWriter();
@@ -227,7 +227,7 @@ public class CoreTagsTest extends AbstractTest {
 
         String source = "{% for i in 0..5 %}{{i}}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -240,7 +240,7 @@ public class CoreTagsTest extends AbstractTest {
 
         String source = "{% for i in 'a'..5 %}{{i}}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -282,8 +282,8 @@ public class CoreTagsTest extends AbstractTest {
 
         String source = "{% for user in classroom.users %}{{ user.username }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
-        List<User> users = new ArrayList<>();
+        Map<String, Object> context = new HashMap<String, Object>();
+        List<User> users = new ArrayList<User>();
         users.add(new User("Alex"));
         users.add(new User("Bob"));
         Classroom classroom = new Classroom();
@@ -302,7 +302,7 @@ public class CoreTagsTest extends AbstractTest {
         String source = "{% for user in users %}{{ loop.index }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("users", null);
 
         Writer writer = new StringWriter();
@@ -317,7 +317,7 @@ public class CoreTagsTest extends AbstractTest {
         String source = "{% for user in users %}{{ user }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         String[] users = new String[3];
         users[0] = "User 1";
@@ -337,7 +337,7 @@ public class CoreTagsTest extends AbstractTest {
         String source = "{% for num in ints %}{{ num }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         int[] ints = new int[3];
         ints[0] = 1;
@@ -363,8 +363,8 @@ public class CoreTagsTest extends AbstractTest {
         String source = "" + "{% for user in users %}{{ user.username }}{% endfor %}"
                 + "{% for user in users %}{{ user.username }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
-        List<User> users = new ArrayList<>();
+        Map<String, Object> context = new HashMap<String, Object>();
+        List<User> users = new ArrayList<User>();
         users.add(new User("Alex"));
         users.add(new User("Bob"));
         context.put("users", users);
@@ -381,8 +381,8 @@ public class CoreTagsTest extends AbstractTest {
 
         String source = "{% for user in users %}{{ user.username }}{% else %}yes{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
-        List<User> users = new ArrayList<>();
+        Map<String, Object> context = new HashMap<String, Object>();
+        List<User> users = new ArrayList<User>();
         context.put("users", users);
 
         Writer writer = new StringWriter();
@@ -508,7 +508,7 @@ public class CoreTagsTest extends AbstractTest {
         String source = "{% cache 'test' %}{% if foobar %}true{% else %}false{% endif %}{% endcache %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("foobar", true);
 
         Writer writer = new StringWriter();
@@ -530,7 +530,7 @@ public class CoreTagsTest extends AbstractTest {
         String source = "{% cache 'test' %}{% if foobar %}true{% else %}false{% endif %}{% endcache %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("foobar", true);
 
         Writer writer = new StringWriter();
@@ -551,7 +551,7 @@ public class CoreTagsTest extends AbstractTest {
         String source = "{% cache 'test' + var %}{% if foobar %}true{% else %}false{% endif %}{% endcache %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("foobar", true);
         context.put("var", 12);
 
@@ -573,7 +573,7 @@ public class CoreTagsTest extends AbstractTest {
         String source = "{% cache %}{% if foobar %}true{% else %}false{% endif %}{% endcache %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("foobar", true);
 
         Writer writer = new StringWriter();
@@ -628,7 +628,7 @@ public class CoreTagsTest extends AbstractTest {
         SimpleObjectA a = new SimpleObjectA();
         a.setValue("A");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", a);
 
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
@@ -667,7 +667,7 @@ public class CoreTagsTest extends AbstractTest {
         SimpleObjectB objectB = new SimpleObjectB();
         objectB.setValue("B");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", objectA);
 
         Writer writer = new StringWriter();
@@ -773,7 +773,7 @@ public class CoreTagsTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().strictVariables(false).build();
         PebbleTemplate template = pebble.getTemplate("templates/template.includePropagatesContext.peb");
         Writer writer = new StringWriter();
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("name", "Mitchell");
         template.evaluate(writer, context);
         assertEquals("Mitchell", writer.toString());
@@ -802,7 +802,7 @@ public class CoreTagsTest extends AbstractTest {
 
         String source = "{% set name = 'alex'  %}{{ name }}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("name", "steve");
 
         Writer writer = new StringWriter();
@@ -824,7 +824,7 @@ public class CoreTagsTest extends AbstractTest {
     public void testVerbatim() throws PebbleException, IOException {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
         PebbleTemplate template = pebble.getTemplate("{% verbatim %}{{ foo }}{{ bar }}{% endverbatim %}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("foo", "baz");
 
         Writer writer = new StringWriter();
@@ -840,7 +840,7 @@ public class CoreTagsTest extends AbstractTest {
         PebbleTemplate template = pebble.getTemplate(source);
 
         Writer writer = new StringWriter();
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("slowObject", new SlowObject());
         template.evaluate(writer, context);
 
@@ -865,7 +865,7 @@ public class CoreTagsTest extends AbstractTest {
         PebbleTemplate template = pebble.getTemplate(source);
 
         Writer writer = new StringWriter();
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         context.put("array", new int[10]);
         template.evaluate(writer, context);
@@ -892,7 +892,7 @@ public class CoreTagsTest extends AbstractTest {
         PebbleTemplate template = pebble.getTemplate(source);
 
         Writer writer = new StringWriter();
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         context.put("slowObject", new SlowObject());
         template.evaluate(writer, context);
@@ -909,7 +909,7 @@ public class CoreTagsTest extends AbstractTest {
         PebbleTemplate template = pebble.getTemplate("templates/template.parallelInclude1.peb");
 
         Writer writer = new StringWriter();
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("slowObject", new SlowObject());
         template.evaluate(writer, context);
         assertEquals("first" + LINE_SEPARATOR + "TEMPLATE1" + LINE_SEPARATOR + "first", writer.toString());
@@ -924,7 +924,7 @@ public class CoreTagsTest extends AbstractTest {
         PebbleTemplate template = pebble.getTemplate(source);
 
         Writer writer = new StringWriter();
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("slowObject", new SlowObject());
         template.evaluate(writer, context);
 
@@ -1007,7 +1007,7 @@ public class CoreTagsTest extends AbstractTest {
 
     public class Classroom {
 
-        private List<User> users = new ArrayList<>();
+        private List<User> users = new ArrayList<User>();
 
         public List<User> getUsers() {
             return users;
@@ -1020,7 +1020,7 @@ public class CoreTagsTest extends AbstractTest {
 
     public class FlushAwareWriter extends StringWriter {
 
-        private List<String> buffers = new ArrayList<>();
+        private List<String> buffers = new ArrayList<String>();
 
         @Override
         public void flush() {

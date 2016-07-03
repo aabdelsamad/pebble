@@ -20,7 +20,7 @@ public class MergeFilter implements Filter {
 
     public static final String FILTER_NAME = "merge";
 
-    private final List<String> argumentNames = new ArrayList<>();
+    private final List<String> argumentNames = new ArrayList<String>();
 
     public MergeFilter() {
         argumentNames.add("items");

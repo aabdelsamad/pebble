@@ -43,7 +43,7 @@ public class ArrayExpression implements Expression<List<?>> {
 
     @Override
     public List<?> evaluate(PebbleTemplateImpl self, EvaluationContext context) throws PebbleException {
-        List<Object> returnValues = new ArrayList<>(values.size());
+        List<Object> returnValues = new ArrayList<Object>(values.size());
         for (int i = 0; i < values.size(); i++) {
             Expression<?> expr = values.get(i);
             Object value = expr == null ? null : expr.evaluate(self, context);

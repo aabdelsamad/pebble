@@ -27,7 +27,7 @@ public class IncludeWithParameterTest extends AbstractTest {
     public void testIncludeWithParameters() throws PebbleException, IOException {
         PebbleEngine pebble = new PebbleEngine.Builder().strictVariables(false).build();
         PebbleTemplate template = pebble.getTemplate("templates/template.includeWithParameter1.peb");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         context.put("contextVariable", "some-context-variable");
         context.put("level", 1);
@@ -46,7 +46,7 @@ public class IncludeWithParameterTest extends AbstractTest {
 
         PebbleEngine pebble = new PebbleEngine.Builder().strictVariables(false).build();
         PebbleTemplate template = pebble.getTemplate("templates/template.includeWithParameterNotIsolated1.peb");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         Writer writer = new StringWriter();
         template.evaluate(writer, context);

@@ -24,7 +24,7 @@ public class EnumEqualsTest extends AbstractTest{
 
         String source = "{% if 'MY_CONSTANT' equals obj2 %}yes{% else %}no{% endif %}{% if obj2 equals 'MY_CONSTANT' %}yes{% else %}no{% endif %}{% if obj2 equals 'OTHER_CONSTANT' %}no{% else %}yes{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("obj2", TestEnum.MY_CONSTANT);
 
         Writer writer = new StringWriter();

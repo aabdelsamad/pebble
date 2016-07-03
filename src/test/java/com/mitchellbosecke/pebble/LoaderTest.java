@@ -81,7 +81,7 @@ public class LoaderTest extends AbstractTest {
 
     @Test
     public void testDelegatingLoader() throws PebbleException, IOException {
-        List<Loader<?>> loaders = new ArrayList<>();
+        List<Loader<?>> loaders = new ArrayList<Loader<?>>();
         loaders.add(new StringLoaderFailure());
         loaders.add(new StringLoaderOne());
         loaders.add(new StringLoaderTwo());

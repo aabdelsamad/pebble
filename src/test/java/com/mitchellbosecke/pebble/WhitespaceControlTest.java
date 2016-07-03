@@ -47,7 +47,7 @@ public class WhitespaceControlTest extends AbstractTest {
         PebbleTemplate template = pebble.getTemplate("<li>    	{{- foo }}</li>");
         Writer writer = new StringWriter();
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("foo", "bar");
         template.evaluate(writer, context);
         assertEquals("<li>bar</li>", writer.toString());
@@ -60,7 +60,7 @@ public class WhitespaceControlTest extends AbstractTest {
         PebbleTemplate template = pebble.getTemplate("{{- foo -}}");
         Writer writer = new StringWriter();
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("foo", "bar");
         template.evaluate(writer, context);
         assertEquals("bar", writer.toString());
@@ -73,7 +73,7 @@ public class WhitespaceControlTest extends AbstractTest {
         PebbleTemplate template = pebble.getTemplate("<li>{{ foo -}}   	</li>");
         Writer writer = new StringWriter();
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("foo", "bar");
         template.evaluate(writer, context);
         assertEquals("<li>bar</li>", writer.toString());
@@ -86,7 +86,7 @@ public class WhitespaceControlTest extends AbstractTest {
         PebbleTemplate template = pebble.getTemplate("{{ foo }} <li>   {{- foo -}}   	</li> {{ foo }}");
         Writer writer = new StringWriter();
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("foo", "bar");
         template.evaluate(writer, context);
         assertEquals("bar <li>bar</li> bar", writer.toString());
@@ -99,7 +99,7 @@ public class WhitespaceControlTest extends AbstractTest {
         PebbleTemplate template = pebble.getTemplate("<li>\n{{- foo -}}\n</li>");
         Writer writer = new StringWriter();
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("foo", "bar");
         template.evaluate(writer, context);
         assertEquals("<li>bar</li>", writer.toString());
@@ -113,7 +113,7 @@ public class WhitespaceControlTest extends AbstractTest {
                 .getTemplate("<li>    	{%- if true %} success {% else %} fail {% endif -%}   	</li>");
         Writer writer = new StringWriter();
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("foo", "bar");
         template.evaluate(writer, context);
         assertEquals("<li> success </li>", writer.toString());

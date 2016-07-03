@@ -64,7 +64,7 @@ public class BodyNode extends AbstractRenderableNode {
         this.onlyRenderInheritanceSafeNodes = onlyRenderInheritanceSafeNodes;
     }
 
-    private static List<Class<? extends Node>> nodesToRenderInChild = new ArrayList<>();
+    private static List<Class<? extends Node>> nodesToRenderInChild = new ArrayList<Class<? extends Node>>();
 
     static {
         nodesToRenderInChild.add(SetNode.class);

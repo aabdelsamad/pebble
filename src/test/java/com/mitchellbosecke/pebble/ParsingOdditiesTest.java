@@ -33,7 +33,7 @@ public class ParsingOdditiesTest extends AbstractTest {
     public void testEscapeCharactersText() throws PebbleException, IOException {
         PebbleEngine pebble = new PebbleEngine.Builder().strictVariables(false).build();
         PebbleTemplate template = pebble.getTemplate("templates/template.escapeCharactersInText.peb");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
     }
@@ -58,7 +58,7 @@ public class ParsingOdditiesTest extends AbstractTest {
         String source = "{{ stringDate | date('yyyy/MMMM/d', existingFormat='yyyy-MMMM-d') }}";
 
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         DateFormat format = new SimpleDateFormat("yyyy-MMMM-d", Locale.ENGLISH);
         Date realDate = format.parse("2012-July-01");
         context.put("stringDate", format.format(realDate));
@@ -76,7 +76,7 @@ public class ParsingOdditiesTest extends AbstractTest {
         String source = "{{ stringDate | date(existingFormat='yyyy-MMMM-d', 'yyyy/MMMM/d') }}";
 
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         DateFormat format = new SimpleDateFormat("yyyy-MMMM-d");
         Date realDate = format.parse("2012-July-01");
         context.put("stringDate", format.format(realDate));
@@ -92,7 +92,7 @@ public class ParsingOdditiesTest extends AbstractTest {
 
         PebbleTemplate template = pebble
                 .getTemplate("{{ organization }} {{ nothing }} {{ andy }} {{ equalsy }} {{ istanbul }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("organization", "organization");
         context.put("nothing", "nothing");
         context.put("andy", "andy");
@@ -108,7 +108,7 @@ public class ParsingOdditiesTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
 
         PebbleTemplate template = pebble.getTemplate("{{ foo.org }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("foo", new Foo("success"));
         Writer writer = new StringWriter();
         template.evaluate(writer, context);

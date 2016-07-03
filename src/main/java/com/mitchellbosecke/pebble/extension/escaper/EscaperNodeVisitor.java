@@ -22,9 +22,9 @@ import java.util.List;
 
 public class EscaperNodeVisitor extends AbstractNodeVisitor {
 
-    private final LinkedList<String> strategies = new LinkedList<>();
+    private final LinkedList<String> strategies = new LinkedList<String>();
 
-    private final LinkedList<Boolean> active = new LinkedList<>();
+    private final LinkedList<Boolean> active = new LinkedList<Boolean>();
 
     public EscaperNodeVisitor(PebbleTemplateImpl template, boolean autoEscapting) {
         super(template);
@@ -74,7 +74,7 @@ public class EscaperNodeVisitor extends AbstractNodeVisitor {
          * Build the arguments to the escape filter. The arguments will just
          * include the strategy being used.
          */
-        List<NamedArgumentNode> namedArgs = new ArrayList<>();
+        List<NamedArgumentNode> namedArgs = new ArrayList<NamedArgumentNode>();
         if (!strategies.isEmpty() && strategies.peek() != null) {
             String strategy = strategies.peek();
             namedArgs.add(new NamedArgumentNode("strategy", new LiteralStringExpression(strategy, expression.getLineNumber())));

@@ -19,7 +19,7 @@ public class DebugExtension extends AbstractExtension {
     private final PrettyPrintNodeVisitorFactory prettyPrinter = new PrettyPrintNodeVisitorFactory();
 
     public List<NodeVisitorFactory> getNodeVisitors() {
-        List<NodeVisitorFactory> visitors = new ArrayList<>();
+        List<NodeVisitorFactory> visitors = new ArrayList<NodeVisitorFactory>();
         visitors.add(prettyPrinter);
         return visitors;
     }

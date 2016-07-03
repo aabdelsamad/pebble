@@ -79,7 +79,7 @@ public class CoreOperatorsTest extends AbstractTest {
         String source = "{{ 1 + item.changeInt }} " + "{{ 1 - item.changeInt }} " + "{{ 2 * item.changeInt }} "
                 + "{{ 11 / item.changeInt }} " + "{{ 4 % item.changeInt }}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("item", new Item());
 
         Writer writer = new StringWriter();
@@ -96,7 +96,7 @@ public class CoreOperatorsTest extends AbstractTest {
 
         Writer writer = new StringWriter();
         
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("number1", BigDecimal.valueOf(100d));
         context.put("number2", BigDecimal.valueOf(30d));
         
@@ -113,7 +113,7 @@ public class CoreOperatorsTest extends AbstractTest {
 
         Writer writer = new StringWriter();
         
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("number1", BigDecimal.valueOf(100d));
         context.put("number2", 30d);
         
@@ -130,7 +130,7 @@ public class CoreOperatorsTest extends AbstractTest {
 
         Writer writer = new StringWriter();
         
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("number1", BigInteger.valueOf(100));
         context.put("number2", BigInteger.valueOf(30));
         
@@ -147,7 +147,7 @@ public class CoreOperatorsTest extends AbstractTest {
 
         Writer writer = new StringWriter();
         
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("number1", BigInteger.valueOf(100));
         context.put("number2", 30L);
         
@@ -164,7 +164,7 @@ public class CoreOperatorsTest extends AbstractTest {
 
         Writer writer = new StringWriter();
         
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("number1", (short) 100);
         context.put("number2", (short) 30);
         
@@ -184,7 +184,7 @@ public class CoreOperatorsTest extends AbstractTest {
 
         String source = "{% if -5 > -item.changeInt %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("item", new Item());
 
         Writer writer = new StringWriter();
@@ -198,7 +198,7 @@ public class CoreOperatorsTest extends AbstractTest {
 
         String source = "{% if not(item.truthy) %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("item", new Item());
 
         Writer writer = new StringWriter();
@@ -213,7 +213,7 @@ public class CoreOperatorsTest extends AbstractTest {
         String source = "{% if item.truthy and item.falsy %}yes{% else %}no{% endif %}"
                 + "{% if item.truthy or item.falsy %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("item", new Item());
 
         Writer writer = new StringWriter();
@@ -281,7 +281,7 @@ public class CoreOperatorsTest extends AbstractTest {
 
         String source = "{% if 'test' equals obj2 %}yes{% endif %}{% if 'blue' equals 'red' %}no{% else %}yes{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("obj2", new String("test"));
 
         Writer writer = new StringWriter();
@@ -296,7 +296,7 @@ public class CoreOperatorsTest extends AbstractTest {
 
         String source = "{% if null equals null %}yes{% endif %}{% if null equals obj %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("obj", null);
 
         Writer writer = new StringWriter();
@@ -311,7 +311,7 @@ public class CoreOperatorsTest extends AbstractTest {
 
         String source = "{% if 'Mitchell' != name %}no{% else %}yes{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("name", "Mitchell");
 
         Writer writer = new StringWriter();
@@ -326,7 +326,7 @@ public class CoreOperatorsTest extends AbstractTest {
 
         String source = "{% if 1 equals 1 %}yes{% endif %}{% if 3 equals item.changeInt %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("item", new Item());
 
         Writer writer = new StringWriter();
@@ -350,7 +350,7 @@ public class CoreOperatorsTest extends AbstractTest {
         PebbleTemplate template = pebble.getTemplate(source);
 
         // Test Integer, Long, Float and Double.
-        List<Pair<Number, String>> tests = new ArrayList<>();
+        List<Pair<Number, String>> tests = new ArrayList<Pair<Number, String>>();
         tests.add(new Pair(1, "num1"));
         tests.add(new Pair(999999, "num999999"));
         tests.add(new Pair(1l, "num1"));
@@ -361,7 +361,7 @@ public class CoreOperatorsTest extends AbstractTest {
         tests.add(new Pair(999999d, "num999999"));
 
         for (Pair<Number, String> test : tests) {
-            Map<String, Object> context = new HashMap<>();
+            Map<String, Object> context = new HashMap<String, Object>();
             context.put("v", test.getLeft());
 
             Writer writer = new StringWriter();
@@ -388,7 +388,7 @@ public class CoreOperatorsTest extends AbstractTest {
                 + "{% if item.change > 2.0 %}yes{% else %}no{% endif %}"
                 + "{% if item.change >= 2.0 %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("item", new Item());
 
         Writer writer = new StringWriter();
@@ -418,7 +418,7 @@ public class CoreOperatorsTest extends AbstractTest {
                 "{% if number2 == number1 %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("number1", BigDecimal.valueOf(3d));
         context.put("number2", BigDecimal.valueOf(2d));
         
@@ -435,7 +435,7 @@ public class CoreOperatorsTest extends AbstractTest {
         String source = "{% if number1 > number2 %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("number1", null);
         context.put("number2", BigDecimal.valueOf(2d));
         
@@ -452,7 +452,7 @@ public class CoreOperatorsTest extends AbstractTest {
         String source = "{% if number1 > number2 %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("number1", BigDecimal.valueOf(3d));
         context.put("number2", null);
         
@@ -483,7 +483,7 @@ public class CoreOperatorsTest extends AbstractTest {
                 "{% if number2 == number1 %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("number1", BigDecimal.valueOf(3d));
         context.put("number2", 2d);
         
@@ -537,7 +537,7 @@ public class CoreOperatorsTest extends AbstractTest {
         String source = "{% if names contains 'John' %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("names", Arrays.asList("Bob", "Maria", "John"));
 
         Writer writer = new StringWriter();
@@ -567,7 +567,7 @@ public class CoreOperatorsTest extends AbstractTest {
         String source = "{% if names contains 'Maria' %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("names", new HashMap<String, String>() {
 
             {
@@ -590,7 +590,7 @@ public class CoreOperatorsTest extends AbstractTest {
         String source = "{% if names contains 'Cobra' %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("names", Arrays.asList("Bob", "Maria", "John"));
 
         Writer writer = new StringWriter();
@@ -606,7 +606,7 @@ public class CoreOperatorsTest extends AbstractTest {
         String source = "{% if names contains 'Cobra' %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("names", "Bob Maria John");
 
         Writer writer = new StringWriter();
@@ -622,7 +622,7 @@ public class CoreOperatorsTest extends AbstractTest {
         String source = "{% if names contains 'Bob' and names contains 'Maria' %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("names", Arrays.asList("Bob", "Maria", "John"));
 
         Writer writer = new StringWriter();
@@ -638,7 +638,7 @@ public class CoreOperatorsTest extends AbstractTest {
         String source = "{% if names contains 'John' or names contains 'Cobra' %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("names", Arrays.asList("Bob", "Maria", "John"));
 
         Writer writer = new StringWriter();
@@ -654,7 +654,7 @@ public class CoreOperatorsTest extends AbstractTest {
         String source = "{% if not names contains 'Cobra' %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("names", Arrays.asList("Bob", "Maria", "John"));
 
         Writer writer = new StringWriter();
@@ -669,7 +669,7 @@ public class CoreOperatorsTest extends AbstractTest {
 
         String source = "{% if values contains value %}yes{% else %}no{% endif %}";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         Writer writer;
 
         // Objects
@@ -747,7 +747,7 @@ public class CoreOperatorsTest extends AbstractTest {
         String source = "{{ name1 ~ name2 ~ name3 | lower }}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("name1", "Bob");
         context.put("name2", "Maria");
         context.put("name3", "John");

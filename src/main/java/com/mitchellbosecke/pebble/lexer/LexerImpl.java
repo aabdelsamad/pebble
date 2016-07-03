@@ -138,9 +138,9 @@ public final class LexerImpl implements Lexer {
          */
         this.state = State.DATA;
 
-        this.tokens = new ArrayList<>();
-        this.states = new LinkedList<>();
-        this.brackets = new LinkedList<>();
+        this.tokens = new ArrayList<Token>();
+        this.states = new LinkedList<State>();
+        this.brackets = new LinkedList<Pair<String, Integer>>();
 
         /*
          * loop through the entire source and apply different lexing methods
@@ -389,7 +389,7 @@ public final class LexerImpl implements Lexer {
                     throw new ParserException(null, "Unexpected \"" + character + "\"", source.getLineNumber(),
                             source.getFilename());
                 else {
-                    HashMap<String, String> validPairs = new HashMap<>();
+                    HashMap<String, String> validPairs = new HashMap<String, String>();
                     validPairs.put("(", ")");
                     validPairs.put("[", "]");
                     validPairs.put("{", "}");
@@ -554,7 +554,7 @@ public final class LexerImpl implements Lexer {
      */
     private void buildOperatorRegex() {
 
-        List<String> operators = new ArrayList<>();
+        List<String> operators = new ArrayList<String>();
 
         for (UnaryOperator operator : unaryOperators) {
             operators.add(operator.getSymbol());

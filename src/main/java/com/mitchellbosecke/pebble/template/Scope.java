@@ -58,7 +58,7 @@ public class Scope {
      */
     public Scope shallowCopy() {
 
-        Map<String, Object> backingMapCopy = new HashMap<>();
+        Map<String, Object> backingMapCopy = new HashMap<String, Object>();
         backingMapCopy.putAll(backingMap);
 
         return new Scope(backingMapCopy, isLocal);

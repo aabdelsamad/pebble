@@ -45,7 +45,7 @@ public class  FunctionOrMacroInvocationExpression implements Expression<Object> 
 
     private Object applyFunction(PebbleTemplateImpl self, EvaluationContext context, Function function,
             ArgumentsNode args) throws PebbleException {
-        List<Object> arguments = new ArrayList<>();
+        List<Object> arguments = new ArrayList<Object>();
 
         Collections.addAll(arguments, args);
 

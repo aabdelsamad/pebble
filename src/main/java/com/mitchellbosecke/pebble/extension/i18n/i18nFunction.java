@@ -16,7 +16,7 @@ import java.util.*;
 
 public class i18nFunction implements Function {
 
-    private final List<String> argumentNames = new ArrayList<>();
+    private final List<String> argumentNames = new ArrayList<String>();
 
     public i18nFunction() {
         argumentNames.add("bundle");

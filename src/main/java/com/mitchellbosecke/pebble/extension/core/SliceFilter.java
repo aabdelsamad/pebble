@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class SliceFilter implements Filter {
 
-    private final List<String> argumentNames = new ArrayList<>();
+    private final List<String> argumentNames = new ArrayList<String>();
 
     public SliceFilter() {
         argumentNames.add("fromIndex");

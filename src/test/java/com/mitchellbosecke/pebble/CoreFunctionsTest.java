@@ -98,7 +98,7 @@ public class CoreFunctionsTest extends AbstractTest {
         String source = "{{ min(8.0, 1, 4, 5, object.large) }}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new SimpleObject());
 
         Writer writer = new StringWriter();
@@ -113,7 +113,7 @@ public class CoreFunctionsTest extends AbstractTest {
         String source = "{{ max(8.0, 1, 4, 5, object.large) }}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new SimpleObject());
 
         Writer writer = new StringWriter();
@@ -128,7 +128,7 @@ public class CoreFunctionsTest extends AbstractTest {
         String source = "{% for i in range(0,5) %}{{ i }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -142,7 +142,7 @@ public class CoreFunctionsTest extends AbstractTest {
         String source = "{% for i in range(0,10,2) %}{{ i }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -156,7 +156,7 @@ public class CoreFunctionsTest extends AbstractTest {
         String source = "{% for i in range(10,0,-2) %}{{ i }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -170,7 +170,7 @@ public class CoreFunctionsTest extends AbstractTest {
         String source = "{% for i in range(0,5,0) %}{{ i }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -183,7 +183,7 @@ public class CoreFunctionsTest extends AbstractTest {
         String source = "{% for i in range('a','e') %}{{ i }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -197,7 +197,7 @@ public class CoreFunctionsTest extends AbstractTest {
         String source = "{% for i in range('a','f',2) %}{{ i }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -211,7 +211,7 @@ public class CoreFunctionsTest extends AbstractTest {
         String source = "{% for i in range('f','a',-2) %}{{ i }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -225,7 +225,7 @@ public class CoreFunctionsTest extends AbstractTest {
         String source = "{% for i in range('a','e',0) %}{{ i }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -238,7 +238,7 @@ public class CoreFunctionsTest extends AbstractTest {
         String source = "{% for i in range(0,var) %}{{ i }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("var", 5L);
 
         Writer writer = new StringWriter();
@@ -253,7 +253,7 @@ public class CoreFunctionsTest extends AbstractTest {
         String source = "{% for i in range(0,var) %}{{ i }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("var", 5.5D);
 
         Writer writer = new StringWriter();
@@ -268,7 +268,7 @@ public class CoreFunctionsTest extends AbstractTest {
         String source = "{% for i in range(0,var) %}{{ i }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("var", 5);
 
         Writer writer = new StringWriter();
@@ -283,7 +283,7 @@ public class CoreFunctionsTest extends AbstractTest {
         String source = "{% for i in range(0,var,increment) %}{{ i }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("var", 5);
         context.put("increment", 2);
 
@@ -299,7 +299,7 @@ public class CoreFunctionsTest extends AbstractTest {
         String source = "{% for i in range(0,var,increment) %}{{ i }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("var", 5);
         context.put("increment", 2D);
 

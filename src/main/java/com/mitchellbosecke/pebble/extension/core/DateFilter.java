@@ -19,7 +19,7 @@ import java.util.*;
 
 public class DateFilter implements Filter {
 
-    private final List<String> argumentNames = new ArrayList<>();
+    private final List<String> argumentNames = new ArrayList<String>();
 
     public DateFilter() {
         argumentNames.add("format");

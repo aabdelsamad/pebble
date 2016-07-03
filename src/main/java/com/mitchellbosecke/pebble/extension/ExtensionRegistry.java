@@ -17,47 +17,47 @@ public class ExtensionRegistry {
     /**
      * Extensions
      */
-    private HashMap<Class<? extends Extension>, Extension> extensions = new HashMap<>();
+    private HashMap<Class<? extends Extension>, Extension> extensions = new HashMap<Class<? extends Extension>, Extension>();
 
     /**
      * Unary operators used during the lexing phase.
      */
-    private Map<String, UnaryOperator> unaryOperators = new HashMap<>();
+    private Map<String, UnaryOperator> unaryOperators = new HashMap<String, UnaryOperator>();
 
     /**
      * Binary operators used during the lexing phase.
      */
-    private Map<String, BinaryOperator> binaryOperators = new HashMap<>();
+    private Map<String, BinaryOperator> binaryOperators = new HashMap<String, BinaryOperator>();
 
     /**
      * Token parsers used during the parsing phase.
      */
-    private Map<String, TokenParser> tokenParsers = new HashMap<>();
+    private Map<String, TokenParser> tokenParsers = new HashMap<String, TokenParser>();
 
     /**
      * Node visitors available during the parsing phase.
      */
-    private List<NodeVisitorFactory> nodeVisitors = new ArrayList<>();
+    private List<NodeVisitorFactory> nodeVisitors = new ArrayList<NodeVisitorFactory>();
 
     /**
      * Filters used during the evaluation phase.
      */
-    private Map<String, Filter> filters = new HashMap<>();
+    private Map<String, Filter> filters = new HashMap<String, Filter>();
 
     /**
      * Tests used during the evaluation phase.
      */
-    private Map<String, Test> tests = new HashMap<>();
+    private Map<String, Test> tests = new HashMap<String, Test>();
 
     /**
      * Functions used during the evaluation phase.
      */
-    private Map<String, Function> functions = new HashMap<>();
+    private Map<String, Function> functions = new HashMap<String, Function>();
 
     /**
      * Global variables available during the evaluation phase.
      */
-    private Map<String, Object> globalVariables = new HashMap<>();
+    private Map<String, Object> globalVariables = new HashMap<String, Object>();
 
     public ExtensionRegistry(Collection<? extends Extension> extensions) {
 

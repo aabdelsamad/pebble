@@ -40,12 +40,12 @@ public class PebbleTemplateImpl implements PebbleTemplate {
     /**
      * Blocks defined inside this template.
      */
-    private final Map<String, Block> blocks = new HashMap<>();
+    private final Map<String, Block> blocks = new HashMap<String, Block>();
 
     /**
      * Macros defined inside this template.
      */
-    private final Map<String, Macro> macros = new HashMap<>();
+    private final Map<String, Macro> macros = new HashMap<String, Macro>();
 
     /**
      * The root node of the AST to be rendered.
@@ -131,7 +131,7 @@ public class PebbleTemplateImpl implements PebbleTemplate {
         locale = locale == null ? engine.getDefaultLocale() : locale;
 
         // globals
-        Map<String, Object> globals = new HashMap<>();
+        Map<String, Object> globals = new HashMap<String, Object>();
         globals.put("locale", locale);
         globals.put("template", this);
         ScopeChain scopeChain = new ScopeChain(globals);

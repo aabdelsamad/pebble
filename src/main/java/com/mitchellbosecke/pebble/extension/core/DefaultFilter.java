@@ -18,7 +18,7 @@ import com.mitchellbosecke.pebble.extension.Test;
 
 public class DefaultFilter implements Filter {
 
-    private final List<String> argumentNames = new ArrayList<>();
+    private final List<String> argumentNames = new ArrayList<String>();
 
     public DefaultFilter() {
         argumentNames.add("default");

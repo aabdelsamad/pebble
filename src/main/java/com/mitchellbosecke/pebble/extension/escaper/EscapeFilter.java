@@ -21,12 +21,12 @@ public class EscapeFilter implements Filter {
 
     private String defaultStrategy = "html";
 
-    private final List<String> argumentNames = new ArrayList<>();
+    private final List<String> argumentNames = new ArrayList<String>();
 
     private final Map<String, EscapingStrategy> strategies;
 
     public EscapeFilter() {
-        this.strategies = new HashMap<>();
+        this.strategies = new HashMap<String, EscapingStrategy>();
         buildDefaultStrategies();
         argumentNames.add("strategy");
     }

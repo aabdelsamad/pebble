@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class NumberFormatFilter implements Filter {
 
-    private final List<String> argumentNames = new ArrayList<>();
+    private final List<String> argumentNames = new ArrayList<String>();
 
     public NumberFormatFilter() {
         argumentNames.add("format");

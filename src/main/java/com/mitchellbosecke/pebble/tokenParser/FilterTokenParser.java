@@ -38,7 +38,7 @@ public class FilterTokenParser extends AbstractTokenParser {
         // skip the 'filter' token
         stream.next();
 
-        List<Expression<?>> filterInvocationExpressions = new ArrayList<>();
+        List<Expression<?>> filterInvocationExpressions = new ArrayList<Expression<?>>();
 
         filterInvocationExpressions.add(parser.getExpressionParser().parseFilterInvocationExpression());
 

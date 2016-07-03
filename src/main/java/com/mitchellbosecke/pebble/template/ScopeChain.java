@@ -23,7 +23,7 @@ public class ScopeChain {
     /**
      * The stack of scopes
      */
-    private LinkedList<Scope> stack = new LinkedList<>();
+    private LinkedList<Scope> stack = new LinkedList<Scope>();
 
     /**
      * Constructs an empty scope chain without any known scopes.
@@ -37,7 +37,7 @@ public class ScopeChain {
      * @param map The map of variables used to initialize a scope.
      */
     public ScopeChain(Map<String, Object> map) {
-        Scope scope = new Scope(new HashMap<>(map), false);
+        Scope scope = new Scope(new HashMap<String, Object>(map), false);
         stack.push(scope);
     }
 

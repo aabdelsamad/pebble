@@ -53,7 +53,7 @@ public class MacroNode extends AbstractRenderableNode {
 
             @Override
             public List<String> getArgumentNames() {
-                List<String> names = new ArrayList<>();
+                List<String> names = new ArrayList<String>();
                 for (NamedArgumentNode arg : getArgs().getNamedArgs()) {
                     names.add(arg.getName());
                 }

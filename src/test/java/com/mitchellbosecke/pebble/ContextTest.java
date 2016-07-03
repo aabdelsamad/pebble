@@ -82,7 +82,7 @@ public class ContextTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{% if foo == null %}YES{% endif %}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("foo", null);
 
         Writer writer = new StringWriter();

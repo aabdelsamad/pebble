@@ -141,7 +141,7 @@ public class DelegatingLoader implements Loader<DelegatingLoaderCacheKey> {
     @Override
     public DelegatingLoaderCacheKey createCacheKey(String templateName) {
 
-        List<Object> keys = new ArrayList<>();
+        List<Object> keys = new ArrayList<Object>();
         for (Loader<?> loader : this.loaders) {
             keys.add(loader.createCacheKey(templateName));
         }

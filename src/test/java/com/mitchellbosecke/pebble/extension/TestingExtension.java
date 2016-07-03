@@ -12,14 +12,14 @@ public class TestingExtension extends AbstractExtension {
 
     @Override
     public Map<String, Function> getFunctions() {
-        Map<String, Function> functions = new HashMap<>();
+        Map<String, Function> functions = new HashMap<String, Function>();
         functions.put("invocationCountingFunction", invocationCountingFunction);
         return functions;
     }
 
     @Override
     public Map<String, Filter> getFilters() {
-        Map<String, Filter> filters = new HashMap<>();
+        Map<String, Filter> filters = new HashMap<String, Filter>();
         filters.put("mapToString", new MapToStringFilter());
         filters.put("listToString", new ListToStringFilter());
         filters.put("arrayToString", new ArrayToStringFilter());

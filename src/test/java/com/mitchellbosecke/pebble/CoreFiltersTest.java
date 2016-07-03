@@ -110,7 +110,7 @@ public class CoreFiltersTest extends AbstractTest {
         String source = "{{ realDate | date('MM/dd/yyyy') }}{{ realDate | date(format) }}{{ stringDate | date('yyyy/MMMM/d','yyyy-MMMM-d') }}";
 
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         DateFormat format = new SimpleDateFormat("yyyy-MMMM-d", Locale.ENGLISH);
         Date realDate = format.parse("2012-July-01");
         context.put("realDate", realDate);
@@ -130,7 +130,7 @@ public class CoreFiltersTest extends AbstractTest {
         String source = "{{ stringDate | date(existingFormat='yyyy-MMMM-d', format='yyyy/MMMM/d') }}";
 
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         DateFormat format = new SimpleDateFormat("yyyy-MMMM-d", Locale.ENGLISH);
         Date realDate = format.parse("2012-July-01");
         context.put("stringDate", format.format(realDate));
@@ -179,7 +179,7 @@ public class CoreFiltersTest extends AbstractTest {
                 .defaultLocale(Locale.ENGLISH).build();
 
         PebbleTemplate template = pebble.getTemplate("You owe me {{ 10000.235166 | numberformat(currencyFormat) }}.");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("currencyFormat", "$#,###,###,##0.00");
 
         Writer writer = new StringWriter();
@@ -194,7 +194,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble
                 .getTemplate("You owe me {{ 10000.235166 | numberformat(format=currencyFormat) }}.");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("currencyFormat", "$#,###,###,##0.00");
 
         Writer writer = new StringWriter();
@@ -264,7 +264,7 @@ public class CoreFiltersTest extends AbstractTest {
     public void testAbbreviateWithSmallLength() throws PebbleException, IOException {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
         PebbleTemplate template = pebble.getTemplate("{{ text | abbreviate(2)}}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("text", "1234567");
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -320,7 +320,7 @@ public class CoreFiltersTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
 
         PebbleTemplate template = pebble.getTemplate("{% for word in words|sort %}{{ word }} {% endfor %}");
-        List<String> words = new ArrayList<>();
+        List<String> words = new ArrayList<String>();
         words.add("zebra");
         words.add("apple");
         words.add(" cat");
@@ -328,7 +328,7 @@ public class CoreFiltersTest extends AbstractTest {
         words.add("Apple");
         words.add("cat");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("words", words);
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -340,7 +340,7 @@ public class CoreFiltersTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
 
         PebbleTemplate template = pebble.getTemplate("{% for word in words|rsort %}{{ word }} {% endfor %}");
-        List<String> words = new ArrayList<>();
+        List<String> words = new ArrayList<String>();
         words.add("zebra");
         words.add("apple");
         words.add(" cat");
@@ -348,7 +348,7 @@ public class CoreFiltersTest extends AbstractTest {
         words.add("Apple");
         words.add("cat");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("words", words);
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -406,7 +406,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate(
                 "{{ obj|default('ONE') }} {{ null|default('TWO') }} {{ '  ' |default('THREE') }} {{ 4 |default('FOUR') }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("obj", null);
 
         Writer writer = new StringWriter();
@@ -427,7 +427,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ name | default('test') }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -440,7 +440,7 @@ public class CoreFiltersTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
 
         PebbleTemplate template = pebble.getTemplate("{{ obj|default(default='ONE') }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("obj", null);
 
         Writer writer = new StringWriter();
@@ -454,12 +454,12 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ names | first }}");
 
-        List<String> names = new ArrayList<>();
+        List<String> names = new ArrayList<String>();
         names.add("Alex");
         names.add("Joe");
         names.add("Bob");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("names", names);
 
         Writer writer = new StringWriter();
@@ -473,7 +473,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ names | first }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("names", null);
 
         Writer writer = new StringWriter();
@@ -487,7 +487,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ name | first }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("name", "Alex");
 
         Writer writer = new StringWriter();
@@ -501,12 +501,12 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ names | join(',') }}");
 
-        List<String> names = new ArrayList<>();
+        List<String> names = new ArrayList<String>();
         names.add("Alex");
         names.add("Joe");
         names.add("Bob");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("names", names);
 
         Writer writer = new StringWriter();
@@ -520,12 +520,12 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ names | join }}");
 
-        List<String> names = new ArrayList<>();
+        List<String> names = new ArrayList<String>();
         names.add("Alex");
         names.add("Joe");
         names.add("Bob");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("names", names);
 
         Writer writer = new StringWriter();
@@ -539,12 +539,12 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ numbers | join(',') }}");
 
-        List<Integer> numbers = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<Integer>();
         numbers.add(1);
         numbers.add(2);
         numbers.add(3);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("numbers", numbers);
 
         Writer writer = new StringWriter();
@@ -569,12 +569,12 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ names | last }}");
 
-        List<String> names = new ArrayList<>();
+        List<String> names = new ArrayList<String>();
         names.add("Alex");
         names.add("Joe");
         names.add("Bob");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("names", names);
 
         Writer writer = new StringWriter();
@@ -599,7 +599,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ name | last }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("name", "Alex");
 
         Writer writer = new StringWriter();
@@ -613,7 +613,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ names | last }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("names", new String[] { "FirstName", "FamilyName" });
 
         Writer writer = new StringWriter();
@@ -627,7 +627,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ ages | last }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("ages", new int[] { 28, 30 });
 
         Writer writer = new StringWriter();
@@ -641,7 +641,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ names | first }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("names", new String[] { "FirstName", "FamilyName" });
 
         Writer writer = new StringWriter();
@@ -655,7 +655,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ ages | first }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("ages", new int[] { 28, 30 });
 
         Writer writer = new StringWriter();
@@ -682,7 +682,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ null | slice }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -695,7 +695,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ name | slice }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("name", "Alex");
 
         Writer writer = new StringWriter();
@@ -709,7 +709,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ name | slice(-1) }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("name", "Alex");
 
         Writer writer = new StringWriter();
@@ -722,7 +722,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ 'abcdefghijklmnopqrstuvwxyz' | slice(from, to) }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("from", new Integer(2));
         context.put("to", new Integer(4));
 
@@ -737,7 +737,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ name | slice(0,-1) }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("name", "Alex");
 
         Writer writer = new StringWriter();
@@ -750,7 +750,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ name | slice(0,1000) }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("name", "Alex");
 
         Writer writer = new StringWriter();
@@ -763,7 +763,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ name | slice(2,5) }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("name", "Alexander");
 
         Writer writer = new StringWriter();
@@ -777,14 +777,14 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ names | slice(2,5) }}");
 
-        List<String> names = new ArrayList<>();
+        List<String> names = new ArrayList<String>();
         names.add("Alex");
         names.add("Joe");
         names.add("Bob");
         names.add("Sarah");
         names.add("Mary");
         names.add("Marge");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("names", names);
 
         Writer writer = new StringWriter();
@@ -799,7 +799,7 @@ public class CoreFiltersTest extends AbstractTest {
         PebbleTemplate template = pebble.getTemplate("{% set n = names | slice(2,5) %}{{ n[0] }}");
 
         String[] names = new String[] { "Alex", "Joe", "Bob", "Sarah", "Mary", "Marge" };
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("names", names);
 
         Writer writer = new StringWriter();
@@ -812,7 +812,7 @@ public class CoreFiltersTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
 
         PebbleTemplate template = pebble.getTemplate("{% set p = primitives | slice(2,5) %}{{ p[0] }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         Writer writer;
 
         // boolean
@@ -878,7 +878,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ names | slice(2,5) }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("names", Long.valueOf(1));
 
         Writer writer = new StringWriter();
@@ -897,7 +897,7 @@ public class CoreFiltersTest extends AbstractTest {
         assertEquals(0, filter.apply(Collections.EMPTY_LIST, null));
         assertEquals(2, filter.apply(Arrays.asList("tttt", "ssss"), null));
         assertEquals(2, filter.apply(Arrays.asList("tttt", "ssss").iterator(), null));
-        Map<String, String> test = new HashMap<>();
+        Map<String, String> test = new HashMap<String, String>();
         test.put("test", "test");
         test.put("other", "other");
         test.put("and_other", "other");
@@ -913,7 +913,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ names | length }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("names", "test");
 
         Writer writer = new StringWriter();
@@ -931,7 +931,7 @@ public class CoreFiltersTest extends AbstractTest {
         PebbleTemplate template = pebble
                 .getTemplate("{{ \"I like %this% and %that%.\"|replace({'%this%': foo, '%that%': \"bar\"}) }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("foo", "foo");
 
         Writer writer = new StringWriter();
@@ -946,7 +946,7 @@ public class CoreFiltersTest extends AbstractTest {
         PebbleTemplate template = pebble
                 .getTemplate("{{{'one':1}|merge({'two':2})|mapToString}} {%set m1 = {'one':1}|merge(['two'])%}{{m1['two']}} {{[1]|merge([2])|listToString}} {%set l1 = [1]|merge({'two':2})%}{{l1[1].value}} {{arr1|merge(arr2)|arrayToString}}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("arr1", new int[] {1});
         context.put("arr2", new int[] {2});
 
@@ -961,7 +961,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ {'one':1}|merge('No way!') }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -973,7 +973,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ [1]|merge('No way!') }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
 
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -985,7 +985,7 @@ public class CoreFiltersTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("{{ arr1|merge(arr2) }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("arr1", new int[] {1});
         context.put("arr2", new String[] {"2"});
 

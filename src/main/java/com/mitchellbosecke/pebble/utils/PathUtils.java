@@ -58,9 +58,9 @@ public final class PathUtils {
 
     private static Collection<String> determineAnchorPathSegments(String anchorPath, char separator) {
         if (anchorPath == null || anchorPath.isEmpty()) {
-            return new ArrayList<>();
+            return new ArrayList<String>();
         }
-        ArrayDeque<String> anchorPathSegments = new ArrayDeque<>(splitBySeparator(anchorPath, separator));
+        ArrayDeque<String> anchorPathSegments = new ArrayDeque<String>(splitBySeparator(anchorPath, separator));
         if (anchorPath.charAt(anchorPath.length() - 1) != separator) {
             anchorPathSegments.pollLast();
         }
@@ -69,7 +69,7 @@ public final class PathUtils {
 
     private static Collection<String> resolvePathSegments(Collection<String> anchorSegments,
             Collection<String> relativeSegments) {
-        ArrayDeque<String> result = new ArrayDeque<>(anchorSegments);
+        ArrayDeque<String> result = new ArrayDeque<String>(anchorSegments);
         for (String segment : relativeSegments) {
             if (segment.equals(".")) {
                 // do nothing

@@ -20,7 +20,7 @@ public class RangeExpression extends BinaryExpression<Object> {
 
     @Override
     public Object evaluate(PebbleTemplateImpl self, EvaluationContext context) throws PebbleException {
-        List<PositionalArgumentNode> positionalArgs = new ArrayList<>();
+        List<PositionalArgumentNode> positionalArgs = new ArrayList<PositionalArgumentNode>();
         positionalArgs.add(new PositionalArgumentNode(getLeftExpression()));
         positionalArgs.add(new PositionalArgumentNode(getRightExpression()));
 

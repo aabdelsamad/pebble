@@ -140,7 +140,7 @@ public class CacheTest extends AbstractTest {
 						TestObject testObject = new TestObject(a, b, c);
 
 						StringWriter writer = new StringWriter();
-						Map<String, Object> context = new HashMap<>();
+						Map<String, Object> context = new HashMap<String, Object>();
 						context.put("test", testObject);
 						template.evaluate(writer, context);
 

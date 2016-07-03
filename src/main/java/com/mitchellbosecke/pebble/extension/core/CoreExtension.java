@@ -22,7 +22,7 @@ public class CoreExtension extends AbstractExtension {
 
     @Override
     public List<TokenParser> getTokenParsers() {
-        ArrayList<TokenParser> parsers = new ArrayList<>();
+        ArrayList<TokenParser> parsers = new ArrayList<TokenParser>();
         parsers.add(new BlockTokenParser());
         parsers.add(new ExtendsTokenParser());
         parsers.add(new FilterTokenParser());
@@ -42,7 +42,7 @@ public class CoreExtension extends AbstractExtension {
 
     @Override
     public List<UnaryOperator> getUnaryOperators() {
-        ArrayList<UnaryOperator> operators = new ArrayList<>();
+        ArrayList<UnaryOperator> operators = new ArrayList<UnaryOperator>();
         operators.add(new UnaryOperatorImpl("not", 5, UnaryNotExpression.class));
         operators.add(new UnaryOperatorImpl("+", 500, UnaryPlusExpression.class));
         operators.add(new UnaryOperatorImpl("-", 500, UnaryMinusExpression.class));
@@ -51,7 +51,7 @@ public class CoreExtension extends AbstractExtension {
 
     @Override
     public List<BinaryOperator> getBinaryOperators() {
-        ArrayList<BinaryOperator> operators = new ArrayList<>();
+        ArrayList<BinaryOperator> operators = new ArrayList<BinaryOperator>();
         operators.add(new BinaryOperatorImpl("or", 10, OrExpression.class, Associativity.LEFT));
         operators.add(new BinaryOperatorImpl("and", 15, AndExpression.class, Associativity.LEFT));
         operators.add(new BinaryOperatorImpl("is", 20, PositiveTestExpression.class, Associativity.LEFT));
@@ -78,7 +78,7 @@ public class CoreExtension extends AbstractExtension {
 
     @Override
     public Map<String, Filter> getFilters() {
-        Map<String, Filter> filters = new HashMap<>();
+        Map<String, Filter> filters = new HashMap<String, Filter>();
         filters.put("abbreviate", new AbbreviateFilter());
         filters.put("abs", new AbsFilter());
         filters.put("capitalize", new CapitalizeFilter());
@@ -104,7 +104,7 @@ public class CoreExtension extends AbstractExtension {
 
     @Override
     public Map<String, Test> getTests() {
-        Map<String, Test> tests = new HashMap<>();
+        Map<String, Test> tests = new HashMap<String, Test>();
         tests.put("empty", new EmptyTest());
         tests.put("even", new EvenTest());
         tests.put("iterable", new IterableTest());
@@ -117,7 +117,7 @@ public class CoreExtension extends AbstractExtension {
 
     @Override
     public Map<String, Function> getFunctions() {
-        Map<String, Function> functions = new HashMap<>();
+        Map<String, Function> functions = new HashMap<String, Function>();
 
         /*
          * For efficiency purposes, some core functions are individually parsed
@@ -138,7 +138,7 @@ public class CoreExtension extends AbstractExtension {
 
     @Override
     public List<NodeVisitorFactory> getNodeVisitors() {
-        List<NodeVisitorFactory> visitors = new ArrayList<>();
+        List<NodeVisitorFactory> visitors = new ArrayList<NodeVisitorFactory>();
         visitors.add(new MacroAndBlockRegistrantNodeVisitorFactory());
         return visitors;
     }

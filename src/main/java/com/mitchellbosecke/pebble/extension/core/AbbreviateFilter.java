@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class AbbreviateFilter implements Filter {
 
-    private final List<String> argumentNames = new ArrayList<>();
+    private final List<String> argumentNames = new ArrayList<String>();
 
     public AbbreviateFilter() {
         argumentNames.add("length");

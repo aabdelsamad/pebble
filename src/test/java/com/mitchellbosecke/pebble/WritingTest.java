@@ -68,7 +68,7 @@ public class WritingTest extends AbstractTest {
         PebbleTemplate template = pebble.getTemplate(source);
         for (int i = 0; i < 2; i++) {
             Writer writer = new StringWriter();
-            Map<String, Object> context = new HashMap<>();
+            Map<String, Object> context = new HashMap<String, Object>();
             context.put("slowObject", new SlowObject());
             template.evaluate(writer, context);
 

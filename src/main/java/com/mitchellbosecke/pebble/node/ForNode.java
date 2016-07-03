@@ -97,7 +97,7 @@ public class ForNode extends AbstractRenderableNode {
                  * get it's own distinct copy of the context.
                  */
                 if (index == 0 || usingExecutorService) {
-                    loop = new HashMap<>();
+                    loop = new HashMap<String, Object>();
                     loop.put("first", index == 0);
                     loop.put("last", index == length - 1);
                     loop.put("length", length);
@@ -171,7 +171,7 @@ public class ForNode extends AbstractRenderableNode {
         } else if (obj.getClass().isArray()) {
 
             if (Array.getLength(obj) == 0) {
-                return new ArrayList<>(0);
+                return new ArrayList<Object>(0);
             }
 
             result = new Iterable<Object>() {

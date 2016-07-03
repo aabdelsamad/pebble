@@ -32,7 +32,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(true).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.name }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new SimpleObject());
 
         Writer writer = new StringWriter();
@@ -45,7 +45,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(true).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.name }}{{ object.name }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new SimpleObject());
 
         Writer writer = new StringWriter();
@@ -57,7 +57,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(true).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.simpleObject2.simpleObject.name }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new SimpleObject3());
 
         Writer writer = new StringWriter();
@@ -70,8 +70,8 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(true).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.name }}");
-        Map<String, Object> context = new HashMap<>();
-        Map<String, String> map = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
+        Map<String, String> map = new HashMap<String, String>();
         map.put("name", "Steve");
         context.put("object", map);
 
@@ -85,7 +85,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(true).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.name }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new SimpleObject4());
 
         Writer writer = new StringWriter();
@@ -106,13 +106,13 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(true).build();
         PebbleTemplate template = pebble.getTemplate("hello {{ object.name }}");
 
-        Map<String, Object> context1 = new HashMap<>();
+        Map<String, Object> context1 = new HashMap<String, Object>();
         context1.put("object", new CustomizableObject("Alex"));
         Writer writer1 = new StringWriter();
         template.evaluate(writer1, context1);
         assertEquals("hello Alex", writer1.toString());
 
-        Map<String, Object> context2 = new HashMap<>();
+        Map<String, Object> context2 = new HashMap<String, Object>();
         context2.put("object", new CustomizableObject("Steve"));
         Writer writer2 = new StringWriter();
         template.evaluate(writer2, context2);
@@ -124,7 +124,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(true).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.name('Steve') }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new BeanWithMethodsThatHaveArguments());
 
         Writer writer = new StringWriter();
@@ -137,7 +137,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(true).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.number(2) }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new BeanWithMethodsThatHaveArguments());
 
         Writer writer = new StringWriter();
@@ -150,7 +150,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(true).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.number(2.0) }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new BeanWithMethodsThatHaveArguments());
 
         Writer writer = new StringWriter();
@@ -163,7 +163,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(true).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.multiply(2, 3) }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new BeanWithMethodsThatHaveArguments());
 
         Writer writer = new StringWriter();
@@ -176,7 +176,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.name }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new SimpleObject5());
 
         Writer writer = new StringWriter();
@@ -189,7 +189,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.name }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new SimpleObject9());
 
         Writer writer = new StringWriter();
@@ -202,7 +202,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.name }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new SimpleObject6());
 
         Writer writer = new StringWriter();
@@ -216,7 +216,7 @@ public class GetAttributeTest extends AbstractTest {
 
         String source = "hello {{ object.map.SimpleObject2.simpleObject.name }}. My name is {{ object.map.SimpleObject6.name }}.";
         PebbleTemplate template = pebble.getTemplate(source);
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new ComplexObject());
 
         Writer writer = new StringWriter();
@@ -240,7 +240,7 @@ public class GetAttributeTest extends AbstractTest {
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.name }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", null);
         Writer writer = new StringWriter();
         template.evaluate(writer, context);
@@ -253,7 +253,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.name }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new Object());
 
         Writer writer = new StringWriter();
@@ -266,7 +266,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(true).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.name }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new Object());
 
         Writer writer = new StringWriter();
@@ -279,7 +279,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.name }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new SimpleObject7());
 
         Writer writer = new StringWriter();
@@ -299,7 +299,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(true).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.name }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new SimpleObject7());
 
         Writer writer = new StringWriter();
@@ -313,7 +313,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.name }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new SimpleObject8());
 
         Writer writer = new StringWriter();
@@ -326,7 +326,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
 
         PebbleTemplate template = pebble.getTemplate("{{ arr[2] }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         String[] data = new String[3];
         data[0] = "Zero";
         data[1] = "One";
@@ -343,8 +343,8 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
 
         PebbleTemplate template = pebble.getTemplate("{{ arr[2] }}");
-        Map<String, Object> context = new HashMap<>();
-        List<String> data = new ArrayList<>();
+        Map<String, Object> context = new HashMap<String, Object>();
+        List<String> data = new ArrayList<String>();
         data.add("Zero");
         data.add("One");
         data.add("Two");
@@ -366,8 +366,8 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(true).build();
 
         PebbleTemplate template = pebble.getTemplate("{{ arr[1] }}");
-        Map<String, Object> context = new HashMap<>();
-        List<String> data = new ArrayList<>();
+        Map<String, Object> context = new HashMap<String, Object>();
+        List<String> data = new ArrayList<String>();
         context.put("arr", data);
 
         Writer writer = new StringWriter();
@@ -386,8 +386,8 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(false).build();
 
         PebbleTemplate template = pebble.getTemplate("{{ arr[1] }}");
-        Map<String, Object> context = new HashMap<>();
-        List<String> data = new ArrayList<>();
+        Map<String, Object> context = new HashMap<String, Object>();
+        List<String> data = new ArrayList<String>();
         context.put("arr", data);
 
         Writer writer = new StringWriter();
@@ -400,7 +400,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(true).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.name }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new ChildObject());
 
         Writer writer = new StringWriter();
@@ -420,7 +420,7 @@ public class GetAttributeTest extends AbstractTest {
         String source = "{% for attribute in ['name', 'surname']%}{{ person[attribute] }}{% endfor %}";
         PebbleTemplate template = pebble.getTemplate(source);
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("person", new Person());
 
         Writer writer = new StringWriter();
@@ -502,7 +502,7 @@ public class GetAttributeTest extends AbstractTest {
 
     public class ComplexObject {
 
-        public final Map<String, Object> map = new HashMap<>();
+        public final Map<String, Object> map = new HashMap<String, Object>();
 
         {
             map.put("SimpleObject2", new SimpleObject2());
@@ -541,7 +541,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleTemplate template = pebble.getTemplate("{{ obj.getStringFromLong(1) }} {{ obj.getStringFromLongs(1,2) }}"
             + " {{ obj.getStringFromBoolean(true) }}");
 
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("obj", new PrimitiveArguments());
 
         Writer writer = new StringWriter();
@@ -555,7 +555,7 @@ public class GetAttributeTest extends AbstractTest {
         PebbleEngine pebble = new PebbleEngine.Builder().loader(new StringLoader()).strictVariables(true).build();
 
         PebbleTemplate template = pebble.getTemplate("hello {{ object.name(var) }}");
-        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("object", new BeanWithMethodsThatHaveArguments());
         context.put("var", null);
 

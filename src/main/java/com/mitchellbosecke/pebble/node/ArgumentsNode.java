@@ -62,7 +62,7 @@ public class ArgumentsNode implements Node {
      */
     public Map<String, Object> getArgumentMap(PebbleTemplateImpl self, EvaluationContext context,
             NamedArguments invocableWithNamedArguments) throws PebbleException {
-        Map<String, Object> result = new HashMap<>();
+        Map<String, Object> result = new HashMap<String, Object>();
         List<String> argumentNames = invocableWithNamedArguments.getArgumentNames();
 
         if (argumentNames == null) {

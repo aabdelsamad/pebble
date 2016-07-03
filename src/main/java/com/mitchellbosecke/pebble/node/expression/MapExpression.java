@@ -45,7 +45,7 @@ public class MapExpression implements Expression<Map<?, ?>> {
 
     @Override
     public Map<?, ?> evaluate(PebbleTemplateImpl self, EvaluationContext context) throws PebbleException {
-        Map<Object, Object> returnEntries = new HashMap<>(Long.valueOf(Math.round(Math.ceil(entries.size() / 0.75)))
+        Map<Object, Object> returnEntries = new HashMap<Object, Object>(Long.valueOf(Math.round(Math.ceil(entries.size() / 0.75)))
                 .intValue());
         for (Entry<Expression<?>, Expression<?>> entry : entries.entrySet()) {
             Expression<?> keyExpr = entry.getKey();

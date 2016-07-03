@@ -24,7 +24,7 @@ public class RangeFunction implements Function {
     private static final String PARAM_END = "end";
     private static final String PARAM_INCREMENT = "increment";
     private static final String PARAM_START = "start";
-    private final List<String> argumentNames = new ArrayList<>();
+    private final List<String> argumentNames = new ArrayList<String>();
 
     public RangeFunction() {
         this.argumentNames.add(PARAM_START);
@@ -46,7 +46,7 @@ public class RangeFunction implements Function {
         
         Long incrementNum = ((Number) increment).longValue();
 
-        List<Object> results = new ArrayList<>();
+        List<Object> results = new ArrayList<Object>();
         // Iterating over Number
         if (start instanceof Number && end instanceof Number) {
             Long startNum = ((Number) start).longValue();

@@ -36,7 +36,7 @@ public class MapToStringFilter implements Filter {
         }
         Map<Object, Object> map = (Map<Object, Object>) input;
 
-        List<String> pairs = new ArrayList<>();
+        List<String> pairs = new ArrayList<String>();
 
         for (Entry<Object, Object> entry : map.entrySet()) {
             String pair = String.valueOf(entry.getKey()) + "=" + String.valueOf(entry.getValue());
